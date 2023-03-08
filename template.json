@@ -1,73 +1,410 @@
 {
-  "Actor": {
-    "types": ["character", "npc"],
-    "templates": {
-      "base": {
-        "health": {
-          "value": 10,
-          "min": 0,
-          "max": 10
-        },
-        "power": {
-          "value": 5,
-          "min": 0,
-          "max": 5
-        },
-        "biography": ""
-      }
-    },
-    "character": {
-      "templates": ["base"],
-      "attributes": {
-        "level": {
-          "value": 1
-        }
-      },
-      "abilities": {
-        "str": {
-          "value": 10
-        },
-        "dex": {
-          "value": 10
-        },
-        "con": {
-          "value": 10
-        },
-        "int": {
-          "value": 10
-        },
-        "wis": {
-          "value": 10
-        },
-        "cha": {
-          "value": 10
-        }
-      }
-    },
-    "npc": {
-      "templates": ["base"],
-      "cr": 0
-    }
-  },
-  "Item": {
-    "types": ["item", "feature", "spell"],
-    "templates": {
-      "base": {
-        "description": ""
-      }
-    },
-    "item": {
-      "templates": ["base"],
-      "quantity": 1,
-      "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
-    },
-    "feature": {
-      "templates": ["base"]
-    },
-    "spell": {
-      "templates": ["base"],
-      "spellLevel": 1
-    }
-  }
+	"Actor": {
+		"types": ["asari", "drell", "human", "krogan", "quarien", "galarien", "turien"],
+		"templates": {
+			"base": {
+				"derivedTraits": {
+					"armor": {
+						"value": 0,
+						"max": 7,
+						"mod": 0
+					},
+					"speed": {
+						"value": 5,
+						"mod": 0
+					}
+				},
+				"abilities": {
+					"skills": {
+						"skill_mental": {
+							"knowledge": {
+								"max": 4,
+								"min": 1,
+								"specialities": [
+									"Culture générale",
+									"Forensic",
+									"Histoire",
+									"Médecine",
+									"Politique",
+									"Science",
+									"Ethnologie",
+									"Technologie"
+								]
+							},
+							"ressourcefullness": {
+								"max": 4,
+								"min": 1,
+								"specialities": [
+									"Bricolage",
+									"Premiers soins",
+									"Survie"
+								]
+							},
+							"sense": {
+								"max": 4,
+								"min": 1,
+								"specialities": [
+									"Acuité",
+									"Fouille",
+									"Pistage",
+									"Vigilance"
+								]
+							}
+						},
+						"skill_physical": {
+							"firearms": {
+								"max": 4,
+								"min": 1,
+								"specialities": [
+									"Arme de poing",
+									"Arme lourde",
+									"Fusil d'assaut",
+									"Fusil à pompe",
+									"Fusil de précision"
+								]
+							},
+							"melee": {
+								"max": 4,
+								"min": 1,
+								"specialities": [
+									"Couteau",
+									"Mêlée",
+									"Sabre",
+									"Masse"
+								]
+							},
+							"body_control": {
+								"max": 4,
+								"min": 1,
+								"specialities": [
+									"Athlétisme",
+									"Réflexes",
+									"Discrétion",
+									"Larcin"
+								]
+							}
+						},
+						"skill_social": {
+							"eloquence": {
+								"max": 4,
+								"min": 1,
+								"specialities": [
+									"etiquette",
+									"expression"
+								]
+							},
+							"empathie": {
+								"max": 4,
+								"min": 1,
+								"specialities": [
+									"Asari",
+									"Butarien",
+									"Drell",
+									"Elcor",
+									"Galarien",
+									"Geth",
+									"Hanarii",
+									"Humain",
+									"Krogan",
+									"Quarien"
+								]
+							},
+							"influence": {
+								"max": 4,
+								"min": 1,
+								"specialities": [
+									"Baratin",
+									"Commandement",
+									"Intimidation",
+									"Persuasion",
+									"Politique",
+									"Séduction"
+								]
+							}
+						},
+						"skill_technical": {
+							"interface": {
+								"max": 4,
+								"min": 1,
+								"specialities": [
+									"IA",
+									"IV",
+									"Piratage",
+									"Artillerie"
+								]
+							},
+							"omnitech": {
+								"max": 4,
+								"min": 1,
+								"specialities": [
+									"Brouillage",
+									"Projectile",
+									"Sabotage",
+									"Surcharge"
+								]
+							},
+							"pilotage": {
+								"max": 4,
+								"min": 1,
+								"specialities": [
+									"Méca",
+									"Véhicule",
+									"Vaisseau",
+									"Drone"
+								]
+							}
+						},
+						"skill_biotic": {
+							"Kinesy": {
+								"max": 4,
+								"min": 1,
+								"specialities": [
+									"telekinesy",
+									"projection"
+								]
+							},
+							"aegis": {
+								"max": 4,
+								"min": 1,
+								"specialities": [
+									"barrier",
+									"strengthen"
+								]
+							},
+							"chaos": {
+								"max": 4,
+								"min": 1,
+								"specialities": [
+									"rip",
+									"impede"
+								]
+							}
+						},
+						"talents": []
+					}
+				},
+				"biography": "",
+				"notes": ""
+			}
+		},
+		"asari": {
+			"templates": ["base"],
+			"attributes": {
+				"mind": {
+					"default": 2,
+					"max": 5
+				},
+				"charisma": {
+					"default": 2,
+					"max": 6
+				},
+				"perception": {
+					"default": 2,
+					"max": 5
+				},
+				"vigor": {
+					"default": 2,
+					"max": 3
+				},
+				"dexterity": {
+					"default": 2,
+					"max": 5
+				},
+				"biotics": {
+					"default": 2,
+					"max": 6
+				}
+			}
+		},
+		"drell": {
+			"templates": ["base"],
+			"attributes": {
+				"mind": {
+					"default": 2,
+					"max": 5
+				},
+				"charisma": {
+					"default": 2,
+					"max": 5
+				},
+				"perception": {
+					"default": 2,
+					"max": 5
+				},
+				"vigor": {
+					"default": 2,
+					"max": 6
+				},
+				"dexterity": {
+					"default": 2,
+					"max": 5
+				},
+				"biotics": {
+					"default": 2,
+					"max": 5
+				}
+			}
+		},
+		"human": {
+			"templates": ["base"],
+			"attributes": {
+				"mind": {
+					"default": 2,
+					"max": 5
+				},
+				"charisma": {
+					"default": 2,
+					"max": 5
+				},
+				"perception": {
+					"default": 2,
+					"max": 5
+				},
+				"vigor": {
+					"default": 2,
+					"max": 5
+				},
+				"dexterity": {
+					"default": 2,
+					"max": 5
+				},
+				"biotics": {
+					"default": 0,
+					"max": 5
+				}
+			}
+		},
+		"krogan": {
+			"templates": ["base"],
+			"attributes": {
+				"mind": {
+					"default": 2,
+					"max": 5
+				},
+				"charisma": {
+					"default": 2,
+					"max": 4
+				},
+				"perception": {
+					"default": 2,
+					"max": 6
+				},
+				"vigor": {
+					"default": 2,
+					"max": 7
+				},
+				"dexterity": {
+					"default": 2,
+					"max": 5
+				},
+				"biotics": {
+					"default": 0,
+					"max": 5
+				}
+			}
+		},
+		"quarien": {
+			"templates": ["base"],
+			"attributes": {
+				"mind": {
+					"default": 2,
+					"max": 5
+				},
+				"charisma": {
+					"default": 2,
+					"max": 5
+				},
+				"perception": {
+					"default": 2,
+					"max": 5
+				},
+				"vigor": {
+					"default": 2,
+					"max": 5
+				},
+				"dexterity": {
+					"default": 2,
+					"max": 5
+				},
+				"biotics": {
+					"default": 0,
+					"max": 5
+				}
+			}
+		},
+		"galarien": {
+			"templates": ["base"],
+			"attributes": {
+				"mind": {
+					"default": 2,
+					"max": 6
+				},
+				"charisma": {
+					"default": 2,
+					"max": 5
+				},
+				"perception": {
+					"default": 2,
+					"max": 5
+				},
+				"vigor": {
+					"default": 2,
+					"max": 4
+				},
+				"dexterity": {
+					"default": 2,
+					"max": 5
+				},
+				"biotics": {
+					"default": 0,
+					"max": 4
+				}
+			}
+		},
+		"turien": {
+			"templates": ["base"],
+			"attributes": {
+				"mind": {
+					"default": 2,
+					"max": 5
+				},
+				"charisma": {
+					"default": 2,
+					"max": 5
+				},
+				"perception": {
+					"default": 2,
+					"max": 5
+				},
+				"vigor": {
+					"default": 2,
+					"max": 6
+				},
+				"dexterity": {
+					"default": 2,
+					"max": 5
+				},
+				"biotics": {
+					"default": 0,
+					"max": 4
+				}
+			}
+		}
+	},
+	"Item": {
+		"types": ["item", "feature"],
+		"templates": {
+			"base": {
+				"description": ""
+			}
+		},
+		"item": {
+			"templates": ["base"],
+			"quantity": 1,
+			"weight": 0
+		},
+		"feature": {
+			"templates": ["base"]
+		}
+	}
 }
