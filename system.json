@@ -21,8 +21,8 @@
   "gridUnits": "m",
   "primaryTokenAttribute": null,
   "secondaryTokenAttribute": null,
-  "url": "",
-  "manifest": "",
+  "url": "https://github.com/lecorref/foundry-mene.git",
+  "manifest": "https://github.com/lecorref/foundry-mene/blob/main/system.json",
   "download": "",
   "license": "LICENSE.txt"
 }
